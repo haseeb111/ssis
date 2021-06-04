@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Azure Files Connection Manager(SSISStorage)"
+  DTS:DTSID="{80239A13-8EAE-4DCA-BAA4-D817F07ACBCF}"
+  DTS:CreationName="Azure Files (KingswaySoft)">
+  <DTS:ObjectData>
+    <ConnectionManager
+      ConnectionString="StorageAccount=dneadf01sa03vtd;StorageEndpointsDomain=core.windows.net;ProxyMode=NoProxy;ProxyUsername=;ProxyServer=;ProxyServerPort=0;Timeout=120;RetryOnIntermittentErrors=True;UploadChunkSize=&quot;4 MB&quot;"
+      ConnectByProxy="False" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>VeriTouch.SSIS.Online.Azure</id>
+    <version>2.2.0</version>
+    <authors>Roshni Chandorkar</authors>
+    <owners>VeriPark</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://devops.veripark.com</licenseUrl>
+    <projectUrl>https://devops.veripark.com</projectUrl>
+    <iconUrl>https://devops.veripark.com/Dubai%20Product/_api/_common/identityImage?id=7cf3a174-176a-47ef-aaf3-0655861e2d89</iconUrl>
+    <description>Contains mapping document and ispac file that contains ssis packages of online Azure integration structure of VeriTouch.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>VeriTouch SSIS Online Azure</tags>
+  </metadata>
+  <files>
+    <file src="*.ispac" target="content" />
+    <file src="*.xlsm" target="content" />
+  </files>
+</package>

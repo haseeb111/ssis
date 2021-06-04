@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1300
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "VeriTouch.SSIS.Online.Azure", "VeriTouch.SSIS.Online.Azure\VeriTouch.SSIS.Online.Azure.dtproj", "{885C1909-5383-4DDF-A369-9D8E99F89632}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FD392F04-2BCF-4B61-AB7A-80C2CC2E1974}"
+	ProjectSection(SolutionItems) = preProject
+		VeriTouch.SSIS.Online.Azure.nuspec = VeriTouch.SSIS.Online.Azure.nuspec
+		Documents\VeriTouch_SSISDataMappingDocument_Online_v2.2.xlsm = Documents\VeriTouch_SSISDataMappingDocument_Online_v2.2.xlsm
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{885C1909-5383-4DDF-A369-9D8E99F89632}.Development|Default.ActiveCfg = Development
+		{885C1909-5383-4DDF-A369-9D8E99F89632}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02A8F336-52ED-461A-8A40-E97D3DCED45A}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://devops.veripark.com/dubai%20product
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = VeriTouch.SSIS.Online.Azure\\VeriTouch.SSIS.Online.Azure.dtproj
+		SccProjectName1 = VeriTouch.SSIS.Online.Azure
+		SccLocalPath1 = VeriTouch.SSIS.Online.Azure
+	EndGlobalSection
+EndGlobal

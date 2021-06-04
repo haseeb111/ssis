@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CrmDatabaseConnectionManager"
+  DTS:DTSID="{73124CB2-9294-40D3-AEBA-B25A7CACFCF8}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=192.168.103.79;User ID=crmcustomuser;Initial Catalog=corp_vtdev_MSCRM;Provider=SQLNCLI11.1;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6IZs/crcwEqRcL3zon5UYgAAAAACAAAAAAADZgAAwAAAABAAAACOMeNe4EeQSTWgYyAdCNQ1AAAAAASAAACgAAAAEAAAAD7yceCikNHKIztpnMF3bHR4AAAAraKgYVS0hqBwE/S2t/T8P0fwuZGT884/q9AX/QnBw3X4TUAx+WGEPgXv05gN4zQRH6Oyu4yi01Wsok1AW3d3cRi9deIkX9vrZKeKZuFEIBdWSpHzoe8rAeg7Af8c73NX9HXBqV6moSzF/dGKf/paVD6mEOGx3E53FAAAAEtiazGpTCdra1LnW/o4H+rxFXLs</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

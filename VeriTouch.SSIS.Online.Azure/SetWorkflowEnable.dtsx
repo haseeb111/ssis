@@ -1,0 +1,1645 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/25/2014 10:12:59 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GTDEV-DC"
+  DTS:CreatorName="GTDEV\khawar.khan"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{E5403C47-2E45-49D8-BC41-32218BDAD365}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="SetWorkflowEnable"
+  DTS:PackageType="5"
+
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{2869CF52-EF68-434D-A372-AC84375AE342}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="C:\Veripark\SSISConfig\SSISConnections.dtsConfig"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{7DD7EF8D-C15E-4A9A-AB4C-60E2B5A5710F}"
+      DTS:ObjectName="SSISConnections" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{51A1A4AB-8EEF-43FF-BDF4-75F4A19B8739}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CoreTableCount">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AD4E0C32-DD2F-499C-84A7-1BA9CE795E86}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CrmImportCount">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0C0CB652-B379-4BA9-A5B1-12D59293C1C5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ETLRowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{35C03ED0-E258-45A0-B9CD-95D91819DEF6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8">cif.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D6B98914-DAA7-440B-988E-2C98BAAA6CCB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LevelID">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{01EC1B62-4D62-4702-91F5-91A2D3FF3F56}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LevelType">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Enable Workflow"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{632DFF0C-EB99-4A55-AEE7-4F7BC4AA61A8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Enable Workflow"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Enable Workflow\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Enable Workflow\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Enable Workflow\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Output].Columns[EnableStateCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Output].Columns[EnableStateCode]"
+                      name="EnableStateCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Output].Columns[EnableStatusCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Output].Columns[EnableStatusCode]"
+                      name="EnableStatusCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">2</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">2</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Enable Workflow\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Enable Workflow\Dynamics CRM Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2014 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Dynamics CRM Destination"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">workflow</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  name="IgnoreUnchangedFields">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics 365/CRM server in each service call."
+                  expressionType="Notify"
+                  name="BatchSize">100</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Enable Workflow\Dynamics CRM Destination.Connections[DynamicsCRM]"
+                  connectionManagerID="{d75338f5-d0cd-4510-baae-8e1badc9e151}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Dynamics CRM Connection Manager]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="IgnoreFailure"
+                  hasSideEffects="true"
+                  name="Dynamics CRM Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].Columns[WorkflowID]"
+                      cachedDataType="guid"
+                      cachedName="WorkflowID"
+                      externalMetadataColumnId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[workflowid]"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[WorkflowID]" />
+                    <inputColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].Columns[EnableStateCode]"
+                      cachedDataType="i4"
+                      cachedName="EnableStateCode"
+                      externalMetadataColumnId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[statecode]"
+                      lineageId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Output].Columns[EnableStateCode]" />
+                    <inputColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].Columns[EnableStatusCode]"
+                      cachedDataType="i4"
+                      cachedName="EnableStatusCode"
+                      externalMetadataColumnId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[statuscode]"
+                      lineageId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Output].Columns[EnableStatusCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[asyncautodelete]"
+                      dataType="bool"
+                      name="asyncautodelete">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[clientdata]"
+                      dataType="nText"
+                      name="clientdata">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[createstage]"
+                      dataType="i4"
+                      name="createstage">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[deletestage]"
+                      dataType="i4"
+                      name="deletestage">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[entityimage]"
+                      dataType="image"
+                      name="entityimage">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Image</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[entityimageid]"
+                      dataType="guid"
+                      name="entityimageid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[formid]"
+                      dataType="guid"
+                      name="formid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[inputparameters]"
+                      dataType="nText"
+                      name="inputparameters">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[iscustomizable]"
+                      dataType="wstr"
+                      length="255"
+                      name="iscustomizable">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">ManagedProperty</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[iscustomprocessingstepallowedforotherpublishers]"
+                      dataType="wstr"
+                      length="255"
+                      name="iscustomprocessingstepallowedforotherpublishers">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">ManagedProperty</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[istransacted]"
+                      dataType="bool"
+                      name="istransacted">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[mode]"
+                      dataType="i4"
+                      name="mode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[modifiedby]"
+                      dataType="guid"
+                      name="modifiedby">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="100"
+                      name="name">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[ondemand]"
+                      dataType="bool"
+                      name="ondemand">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[processorder]"
+                      dataType="i4"
+                      name="processorder">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[processroleassignment]"
+                      dataType="nText"
+                      name="processroleassignment">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[processtriggerformid]"
+                      dataType="guid"
+                      name="processtriggerformid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[processtriggerscope]"
+                      dataType="i4"
+                      name="processtriggerscope">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[rank]"
+                      dataType="i4"
+                      name="rank">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[rendererobjecttypecode]"
+                      dataType="wstr"
+                      length="64"
+                      name="rendererobjecttypecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[runas]"
+                      dataType="i4"
+                      name="runas">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[scope]"
+                      dataType="i4"
+                      name="scope">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[solutionid]"
+                      dataType="guid"
+                      name="solutionid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">State</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Status</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[subprocess]"
+                      dataType="bool"
+                      name="subprocess">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[supportingsolutionid]"
+                      dataType="guid"
+                      name="supportingsolutionid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[syncworkflowlogonfailure]"
+                      dataType="bool"
+                      name="syncworkflowlogonfailure">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[triggeroncreate]"
+                      dataType="bool"
+                      name="triggeroncreate">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[triggerondelete]"
+                      dataType="bool"
+                      name="triggerondelete">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[triggeronupdateattributelist]"
+                      dataType="nText"
+                      name="triggeronupdateattributelist">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[type]"
+                      dataType="i4"
+                      name="type">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[uniquename]"
+                      dataType="wstr"
+                      length="256"
+                      name="uniquename">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[updatestage]"
+                      dataType="i4"
+                      name="updatestage">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[workflowid]"
+                      dataType="guid"
+                      name="workflowid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">workflow</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[workflowidunique]"
+                      dataType="guid"
+                      name="workflowidunique">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input].ExternalColumns[xaml]"
+                      dataType="nText"
+                      name="xaml">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Dynamics CRM Destination Error Output"
+                  synchronousInputId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Default Output]"
+                  exclusionGroup="1"
+                  name="Dynamics CRM Destination Default Output"
+                  synchronousInputId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Default Output].Columns[CrmRecordId]"
+                      dataType="guid"
+                      lineageId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Default Output].Columns[CrmRecordId]"
+                      name="CrmRecordId" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Default Output].Columns[IsNew]"
+                      dataType="bool"
+                      lineageId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Default Output].Columns[IsNew]"
+                      name="IsNew" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Enable Workflow\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Update WorkflowDefinition set Disabled =0 where Workflowid = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Enable Workflow\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{83028825-442B-4E84-AA0D-A5825CBD04A3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[VRPCrmIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Enable Workflow\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Enable Workflow\OLE DB Command.Inputs[OLE DB Command Input].Columns[WorkflowID]"
+                      cachedDataType="guid"
+                      cachedName="WorkflowID"
+                      externalMetadataColumnId="Package\Enable Workflow\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[WorkflowID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="guid"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Enable Workflow\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Enable Workflow\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Enable Workflow\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Enable Workflow\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Enable Workflow\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Enable Workflow\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Enable Workflow\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from WorkflowDefinition (nolock) where IsActiveForDisable = 1 and Disabled=1</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Enable Workflow\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{83028825-442B-4E84-AA0D-A5825CBD04A3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[VRPCrmIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[EntityName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EntityName]"
+                      length="300"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[EntityName]"
+                      name="EntityName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Disabled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Disabled]"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Disabled]"
+                      name="Disabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActiveForDisable]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsActiveForDisable]"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsActiveForDisable]"
+                      name="IsActiveForDisable"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[WorkflowName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WorkflowName]"
+                      length="300"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[WorkflowName]"
+                      name="WorkflowName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[WorkflowID]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WorkflowID]"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].Columns[WorkflowID]"
+                      name="WorkflowID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EntityName]"
+                      dataType="wstr"
+                      length="300"
+                      name="EntityName" />
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Disabled]"
+                      dataType="bool"
+                      name="Disabled" />
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsActiveForDisable]"
+                      dataType="bool"
+                      name="IsActiveForDisable" />
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WorkflowName]"
+                      dataType="wstr"
+                      length="300"
+                      name="WorkflowName" />
+                    <externalMetadataColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[WorkflowID]"
+                      dataType="guid"
+                      name="WorkflowID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EntityName]"
+                      dataType="wstr"
+                      length="300"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EntityName]"
+                      name="EntityName" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WorkflowName]"
+                      dataType="wstr"
+                      length="300"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WorkflowName]"
+                      name="WorkflowName" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WorkflowID]"
+                      dataType="guid"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[WorkflowID]"
+                      name="WorkflowID" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Disabled]"
+                      dataType="bool"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Disabled]"
+                      name="Disabled" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActiveForDisable]"
+                      dataType="bool"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsActiveForDisable]"
+                      name="IsActiveForDisable" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Enable Workflow.Paths[Derived Column Output]"
+              endId="Package\Enable Workflow\Dynamics CRM Destination.Inputs[Dynamics CRM Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Enable Workflow\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Enable Workflow.Paths[Dynamics CRM Destination Default Output]"
+              endId="Package\Enable Workflow\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Dynamics CRM Destination Default Output"
+              startId="Package\Enable Workflow\Dynamics CRM Destination.Outputs[Dynamics CRM Destination Default Output]" />
+            <path
+              refId="Package\Enable Workflow.Paths[OLE DB Source Output]"
+              endId="Package\Enable Workflow\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Enable Workflow\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get Package Information"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FA35AE90-48FE-43DD-B4A8-851D19B18AA1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Package Information"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+          SQLTask:SqlStatementSource="select cast(LevelId as nvarchar),LevelType,SourceFileName from IntegrationLevelDefinition where SSISPackageName = ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::LevelID" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="1"
+            SQLTask:DtsVariableName="User::LevelType" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="2"
+            SQLTask:DtsVariableName="User::FileName" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Insert Monitoring"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DelayValidation="True"
+      DTS:Description="Set Level Info"
+      DTS:DTSID="{8E5EC74D-0365-4896-AFDD-22346B0665DE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insert Monitoring"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+          SQLTask:SqlStatementSource="insert into [Monitoring]( &#xA;     [LevelId]&#xA;    ,[PackageName]&#xA;    ,[LevelType]&#xA;    ,[StartDateTime]&#xA;    ,[Status]&#xA;    ,[StatusDesc]&#xA;  ) &#xA;values (&#xA;    cast(? as Decimal(4,2))  &#xA;    ,?&#xA;    ,?&#xA;    ,GetDate()&#xA;    ,1&#xA;    ,'Package Execution Started'&#xA;   )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::LevelID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::LevelType"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Monitoring For Succes"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C8B5EEB5-F616-42EE-8292-22711467943E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Monitoring For Succes"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+          SQLTask:SqlStatementSource="update Monitoring Set Status = 2, StatusDesc = 'Package Execution Successfully Completed',EndDateTime=GETDATE() where PackageName = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A0275075-1725-4B35-B99C-C0D083A09D29}"
+      DTS:From="Package\Insert Monitoring"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Enable Workflow" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B1BAF540-B647-4221-8E10-329E2E3941CD}"
+      DTS:From="Package\Enable Workflow"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update Monitoring For Succes" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{F8711BDE-504C-41F4-B485-0C2357E0A072}"
+      DTS:From="Package\Get Package Information"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Insert Monitoring" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{B22AF4E2-4423-49B4-8F5F-A3F9863708F1}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{12FAB8F8-D6F8-401A-A2F6-03170B08CDEC}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Process Failed Sql Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{AC799E77-0969-4572-AABE-3DAA0F5E8084}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process Failed Sql Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="update Monitoring Set Status = -99, StatusDesc = 'Package Execution Failed',EndDateTime=GETDATE() where PackageName = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Send Error Message"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9BB1C7A2-CA36-4803-8E8F-F280910737B1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Send Error Message">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+              SQLTask:SqlStatementSource="INSERT INTO dbo.SSISErrorTable (PackageName, &#xA;ErrorType, ErrorDescription,ErrorCode,CreatedDate,SourceName)&#xA;VALUES (?, 'Package Error',?,?, getdate(),?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Enable Workflow"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Get Package Information"
+          TopLeft="42.5,5.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Insert Monitoring"
+          TopLeft="62,107.5" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Update Monitoring For Succes"
+          TopLeft="29.0000000000001,311.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="142.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-56,60"
+              Start="0,0"
+              End="-56,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-52,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-52,30"
+                    Point2="-56,30"
+                    Point3="-56,34" />
+                  <mssgle:LineSegment
+                    End="-56,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="86.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="56.0000000000001,60"
+              Start="0,0"
+              End="56.0000000000001,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="52.0000000000001,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52.0000000000001,30"
+                    Point2="56.0000000000001,30"
+                    Point3="56.0000000000001,34" />
+                  <mssgle:LineSegment
+                    End="56.0000000000001,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="142.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="197,42"
+          Id="Package.EventHandlers[OnError]\Process Failed Sql Task"
+          TopLeft="60,60" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package.EventHandlers[OnError]\Send Error Message"
+          TopLeft="317.5,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Enable Workflow">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Enable Workflow\OLE DB Source"
+          TopLeft="29.5,5.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Enable Workflow\Derived Column"
+          TopLeft="31,107.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Enable Workflow\OLE DB Command"
+          TopLeft="21.5,311.5" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Enable Workflow\Dynamics CRM Destination"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\Enable Workflow.Paths[OLE DB Source Output]"
+          TopLeft="108,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Enable Workflow.Paths[Dynamics CRM Destination Default Output]"
+          TopLeft="110,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Enable Workflow.Paths[Derived Column Output]"
+          TopLeft="110,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Enable Workflow\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="VRPCrmIntegration"
+  DTS:DTSID="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=tcp:d-ne-sql-01-vtd.database.windows.net,1433;User ID=vshanmugam;Initial Catalog=d-ne-sql-01-staging-db-01-vtd;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Packet Size=32567;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARnNn55L2PUaKbkqHJPvVlAAAAAACAAAAAAADZgAAwAAAABAAAADr3qk8gqllgIVO0TjSzZBLAAAAAASAAACgAAAAEAAAAKfy/KtqroyBDqjVri+ht+eAAAAAsfjEu+OhkBPDS+y8DcVvmkNWvFHZ3MipO6IspeThmwVJy9latDb5KjCKmSBlP1JmedIrUOgIi6JqAk5AcqkTx4Q35ZKIFGGVzTLaHZKN1xu36Y2xI9nkp9mDlgyoF3EU1AvQLI9S2nxqDz9Oktt9W9N8fq69VUtsYLUPEZ66nZwUAAAANCAEZgNM9zeJl5G5vKUhfFASUxk=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

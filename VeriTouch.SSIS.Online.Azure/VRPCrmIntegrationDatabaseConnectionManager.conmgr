@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="VRPCrmIntegrationDatabaseConnectionManager"
+  DTS:DTSID="{6EE4255E-23E0-4B92-8EA0-0FA84F6B1B8B}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=192.168.103.79;User ID=crmcustomuser;Initial Catalog=VRPCrmIntegration;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6IZs/crcwEqRcL3zon5UYgAAAAACAAAAAAADZgAAwAAAABAAAABkrW4ZSzj2ypSgpfOgvJdfAAAAAASAAACgAAAAEAAAADu9dI8Xh02MnfyNOXEvYEB4AAAAvx4laHBlBmdEBuuZp+cAseC2gNnJLfj+flkZ8ZPqn7k0luk3Q2BhwqwF8Nah71emOzYygt1YQvESfe/lxdhlCqkaO6PTME6M+gU8unSzkkZHCJlUvXFdmuW/qR0hWShde27v5AfpS2AoiHOn84kIltb8/f6f6AfbFAAAANbdjpRQgoclH5fDHT7oTnGdj3G2</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,677 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/25/2014 10:12:59 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GTDEV-DC"
+  DTS:CreatorName="GTDEV\khawar.khan"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{2D99F4E5-572C-4EE6-AE67-9A074E31E137}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.167"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="GetPluginStepState"
+  DTS:PackageType="5"
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{E8D5C5F7-4340-4325-809A-0AA046F88572}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="C:\Veripark\SSISConfig\SSISConnections.dtsConfig"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{3F462113-56E2-4896-8B0A-34BCB1B5CC11}"
+      DTS:ObjectName="SSISConnections" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{674F44A2-AFA5-46FA-8F32-30EA6261FD21}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ConnectionString">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=GTDEV-DC;Integrated Security=SSPI;Initial Catalog=VRPCrmIntegration</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get Sdk Message Processing Steps"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{60282AF9-C0D2-4F4B-83E4-F5FBD3824496}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Sdk Message Processing Steps"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Get Sdk Message Processing Steps\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Get Sdk Message Processing Steps\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Get Sdk Message Processing Steps\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Get Sdk Message Processing Steps\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\Derived Column.Outputs[Derived Column Output].Columns[ActiveState]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Get Sdk Message Processing Steps\Derived Column.Outputs[Derived Column Output].Columns[ActiveState]"
+                      name="ActiveState"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Get Sdk Message Processing Steps\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Get Sdk Message Processing Steps\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Get Sdk Message Processing Steps\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Get Sdk Message Processing Steps\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics 365 CE/CRM."
+              name="Dynamics CRM Source"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity"></property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML">&lt;fetch&gt;
+  &lt;entity name="sdkmessageprocessingstep" &gt;
+    &lt;attribute name="sdkmessageprocessingstepid" /&gt;
+    &lt;attribute name="name" alias="PluginStepName" /&gt;
+    &lt;attribute name="statecode" alias="IsDisabled" /&gt;
+    &lt;filter&gt;
+      &lt;condition attribute="statecode" operator="eq" value="0" /&gt;
+    &lt;/filter&gt;
+    &lt;link-entity name="sdkmessage" from="sdkmessageid" to="sdkmessageid" alias="message" &gt;
+      &lt;attribute name="name" alias="Action" /&gt;
+      &lt;filter type="or" &gt;
+        &lt;condition attribute="name" operator="like" value="Update" /&gt;
+        &lt;condition attribute="name" operator="like" value="Create" /&gt;
+        &lt;condition attribute="name" operator="like" value="Retrieve" /&gt;
+        &lt;condition attribute="name" operator="like" value="RetrieveMultiple" /&gt;
+      &lt;/filter&gt;
+    &lt;/link-entity&gt;
+    &lt;link-entity name="sdkmessagefilter" from="sdkmessagefilterid" to="sdkmessagefilterid" alias="sdkmessagefilter" &gt;
+      &lt;attribute name="primaryobjecttypecode" alias="EntityName" /&gt;
+      &lt;filter type="and" &gt;
+        &lt;condition attribute="primaryobjecttypecode" operator="in" &gt;
+          &lt;value&gt;1&lt;/value&gt;
+          &lt;value&gt;2&lt;/value&gt;
+          &lt;value&gt;10161&lt;/value&gt;
+        &lt;/condition&gt;
+      &lt;/filter&gt;
+    &lt;/link-entity&gt;
+    &lt;link-entity name="plugintype" from="plugintypeid" to="plugintypeid" alias="plugintype" &gt;
+      &lt;attribute name="name" alias="pluginname" /&gt;
+      &lt;filter type="or" &gt;
+        &lt;condition attribute="name" operator="begins-with" value="VeriTouch" /&gt;
+        &lt;condition attribute="name" operator="begins-with" value="Vrp" /&gt;
+      &lt;/filter&gt;
+    &lt;/link-entity&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the maximum number of rows to be returned from the Dynamics 365/CRM server (Specify 0 to read all satisfying records)."
+                  expressionType="Notify"
+                  name="MaxRowsReturned">0</property>
+                <property
+                  dataType="System.Null"
+                  description="The caller to be used for CRM impersonation when reading from CRM server."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Connections[DynamicsCRM]"
+                  connectionManagerID="{d75338f5-d0cd-4510-baae-8e1badc9e151}:invalid"
+                  connectionManagerRefId="{d75338f5-d0cd-4510-baae-8e1badc9e151}:invalid"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output]"
+                  name="Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[Action]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[Action]"
+                      length="256"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[Action]"
+                      name="Action"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[EntityName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[EntityName]"
+                      length="64"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[EntityName]"
+                      name="EntityName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[IsDisabled]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[IsDisabled]"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[IsDisabled]"
+                      name="IsDisabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[pluginname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[pluginname]"
+                      length="256"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[pluginname]"
+                      name="pluginname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[PluginStepName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[PluginStepName]"
+                      length="256"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[PluginStepName]"
+                      name="PluginStepName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[sdkmessageprocessingstepid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[sdkmessageprocessingstepid]"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[sdkmessageprocessingstepid]"
+                      name="sdkmessageprocessingstepid"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[Action]"
+                      dataType="wstr"
+                      length="256"
+                      name="Action" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[EntityName]"
+                      dataType="wstr"
+                      length="64"
+                      name="EntityName" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[IsDisabled]"
+                      dataType="i4"
+                      name="IsDisabled" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[pluginname]"
+                      dataType="wstr"
+                      length="256"
+                      name="pluginname" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[PluginStepName]"
+                      dataType="wstr"
+                      length="256"
+                      name="PluginStepName" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].ExternalColumns[sdkmessageprocessingstepid]"
+                      dataType="guid"
+                      name="sdkmessageprocessingstepid" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Get Sdk Message Processing Steps\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[PluginStepDefinition]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{83028825-442B-4E84-AA0D-A5825CBD04A3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[VRPCrmIntegration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EntityName]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="EntityName"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EntityName]"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[EntityName]" />
+                    <inputColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pluginname]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="pluginname"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PluginName]"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[pluginname]" />
+                    <inputColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Action]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="Action"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegisteredEvent]"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[Action]" />
+                    <inputColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PluginStepName]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="PluginStepName"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StepName]"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[PluginStepName]" />
+                    <inputColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sdkmessageprocessingstepid]"
+                      cachedDataType="guid"
+                      cachedName="sdkmessageprocessingstepid"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SdkMessageProcessingStepID]"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[sdkmessageprocessingstepid]" />
+                    <inputColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsDisabled]"
+                      cachedDataType="i4"
+                      cachedName="IsDisabled"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Disabled]"
+                      lineageId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output].Columns[IsDisabled]" />
+                    <inputColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ActiveState]"
+                      cachedDataType="i4"
+                      cachedName="ActiveState"
+                      externalMetadataColumnId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsActiveForDisable]"
+                      lineageId="Package\Get Sdk Message Processing Steps\Derived Column.Outputs[Derived Column Output].Columns[ActiveState]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EntityName]"
+                      dataType="wstr"
+                      length="300"
+                      name="EntityName" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegisteredEvent]"
+                      dataType="wstr"
+                      length="300"
+                      name="RegisteredEvent" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StepName]"
+                      dataType="wstr"
+                      length="300"
+                      name="StepName" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PluginName]"
+                      dataType="wstr"
+                      length="300"
+                      name="PluginName" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SdkMessageProcessingStepID]"
+                      dataType="guid"
+                      name="SdkMessageProcessingStepID" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Disabled]"
+                      dataType="bool"
+                      name="Disabled" />
+                    <externalMetadataColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsActiveForDisable]"
+                      dataType="bool"
+                      name="IsActiveForDisable" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Get Sdk Message Processing Steps.Paths[Derived Column Output]"
+              endId="Package\Get Sdk Message Processing Steps\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Get Sdk Message Processing Steps\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Get Sdk Message Processing Steps.Paths[Primary Output]"
+              endId="Package\Get Sdk Message Processing Steps\Derived Column.Inputs[Derived Column Input]"
+              name="Primary Output"
+              startId="Package\Get Sdk Message Processing Steps\Dynamics CRM Source.Outputs[Primary Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0E2ED641-8CB7-49D8-B9DC-64D0A1F19F0A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+          SQLTask:SqlStatementSource="truncate table [PluginStepDefinition]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0CD52C89-AFF6-422C-8030-487F798BD1B1}"
+      DTS:From="Package\Truncate"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Get Sdk Message Processing Steps" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="255,42"
+          Id="Package\Get Sdk Message Processing Steps"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Truncate"
+          TopLeft="72,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="133,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Get Sdk Message Processing Steps">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Get Sdk Message Processing Steps\OLE DB Destination"
+          TopLeft="244,310" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Get Sdk Message Processing Steps\Dynamics CRM Source"
+          TopLeft="201,47" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Get Sdk Message Processing Steps\Derived Column"
+          TopLeft="248.5,207.5" />
+        <EdgeLayout
+          Id="Package\Get Sdk Message Processing Steps.Paths[Primary Output]"
+          TopLeft="297.5,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28,118.5"
+              Start="0,0"
+              End="28,111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.25"
+                    Point2="0,59.25"
+                    Point3="4,59.25" />
+                  <mssgle:LineSegment
+                    End="24,59.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24,59.25"
+                    Point2="28,59.25"
+                    Point3="28,63.25" />
+                  <mssgle:LineSegment
+                    End="28,111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Get Sdk Message Processing Steps.Paths[Derived Column Output]"
+          TopLeft="329,249.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.5"
+              Start="0,0"
+              End="0,53">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Get Sdk Message Processing Steps\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

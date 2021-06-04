@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="VRPCrmIntegration"
+  DTS:DTSID="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=tcp:d-ne-sql-01-vtd.database.windows.net,1433;User ID=vshanmugam;Initial Catalog=d-ne-sql-01-staging-db-01-vtd;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Packet Size=32567;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

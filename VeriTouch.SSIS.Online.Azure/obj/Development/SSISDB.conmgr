@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SSISDB"
+  DTS:DTSID="{F17797BB-0DEC-499E-8598-C6F4CED17B3F}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=tcp:d-ne-sql-01-vtd.database.windows.net,1433;User ID=vshanmugam;Initial Catalog=SSISDB;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

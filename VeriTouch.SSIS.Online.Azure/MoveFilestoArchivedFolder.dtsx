@@ -1,0 +1,573 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/12/2019 2:05:32 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VP-GULF-DEV-85"
+  DTS:CreatorName="VPHQ\VSHANMUGAM"
+  DTS:DTSID="{6D9B2409-6A75-4E87-BBAC-4ABBADD9673A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MoveFilestoArchivedFolder"
+  DTS:PackageType="5"
+
+  DTS:VersionBuild="72"
+  DTS:VersionGUID="{4C0464C8-5647-494E-81E3-07F41D7C97DD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5C3DE574-2D68-4385-BD2D-790C0498DA47}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::SSISStorageURL]+&quot;\\&quot;+  @[$Project::EncryptedFilesFolderName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DecryptedFilesPath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\dneadf01sa03vtd.file.core.windows.net\encryptedfiles</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0EEDF499-D1FB-4F48-B4F7-80D4965C4177}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::SSISStorageURL]+&quot;\\&quot;+  @[$Project::DecryptedFilesFolderName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="EncryptedFilesPath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\dneadf01sa03vtd.file.core.windows.net\decryptedfiles</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DE783C56-4720-498E-BE61-5FE3C289239C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LevelID">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D41855D8-1BED-4496-86C1-F19219DF41E1}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LevelType">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B37B4C7B-D2BB-4309-AFBD-CF5E00D9BC11}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;DailyBatch&quot;+ (DT_STR,4,1252)DATEPART( &quot;yyyy&quot; , getdate() ) + &quot;&quot; +&#xA;RIGHT(&quot;0&quot; + (DT_STR,4,1252)DATEPART( &quot;mm&quot; , getdate() ), 2) + &quot;&quot; +&#xA;RIGHT(&quot;0&quot; + (DT_STR,4,1252)DATEPART( &quot;dd&quot; , getdate() ), 2) +&quot;.zip&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ZipFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">DailyBatch20201023.zip</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get Pacakge Information"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{25e6ba54-526a-4091-99aa-8a0e9d0dd289}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get Pacakge Information"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+          SQLTask:SqlStatementSource="SELECT [LevelId]&#xA;      ,[LevelType]&#xA;  FROM [IntegrationLevelDefinition] where SSISPackageName = ?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::LevelID" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="1"
+            SQLTask:DtsVariableName="User::LevelType" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Move PGP Files"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{45A924A6-3FEC-4679-AB2E-562CA985DC16}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Move PGP Files">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Move PGP Files\Compression Task"
+          DTS:CreationName="KingswaySoft.IntegrationToolkit.ProductivityPack.CompressionTask"
+          DTS:Description="Compression Task"
+          DTS:DTSID="{D214A799-2FC7-407E-AFE7-0112994D197C}"
+          DTS:ExecutableType="KingswaySoft.IntegrationToolkit.ProductivityPack.CompressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Compression Task"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="DestinationDirectoryPath">@[$Project::SSISStorageURL] +"\\"+  @[$Project::ArchivedFolderName]+"\\"+ @[User::ZipFileName]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="SourcePath">@[$Project::SSISStorageURL]+"\\"+ @[$Project::EncryptedFilesFolderName]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <InnerObject>
+              <Action
+                Type="3"
+                Value="1" />
+              <CompressionFormat
+                Type="3"
+                Value="0" />
+              <SourcePath
+                Type="8"
+                Value="\\dneadf01sa03vtd.file.core.windows.net\encryptedfiles" />
+              <SourceType
+                Type="3"
+                Value="2" />
+              <IncludeSubdirectories
+                Type="11"
+                Value="0" />
+              <DestinationDirectoryPath
+                Type="8"
+                Value="\\dneadf01sa03vtd.file.core.windows.net\archivedfiles\DailyBatch20201023.zip" />
+              <OverwriteExistingItems
+                Type="11"
+                Value="0" />
+              <ContinueOnError
+                Type="11"
+                Value="0" />
+              <Password
+                Type="8"
+                Value="" />
+              <CompressionStrength
+                Type="3"
+                Value="6" />
+              <TemporaryPath
+                Type="8"
+                Value="" />
+              <TargetServerVersion
+                Type="3"
+                Value="140" />
+            </InnerObject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Move PGP Files\Delete Decrypted Files"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{66991AFF-C101-41F5-A359-335FA183ADE5}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete Decrypted Files"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="DeleteDirectoryContent"
+              TaskSourcePath="User::DecryptedFilesPath"
+              TaskIsSourceVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Move PGP Files\Delete Encrypted Files"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{4B49B8CF-E02D-4271-BF6D-ABDE95029FF8}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete Encrypted Files"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="DeleteDirectoryContent"
+              TaskSourcePath="User::EncryptedFilesPath"
+              TaskIsSourceVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Move PGP Files.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8532458E-8E9B-434E-9F7F-563F74122BF7}"
+          DTS:From="Package\Move PGP Files\Compression Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Move PGP Files\Delete Decrypted Files" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Move PGP Files.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{D7E93A90-0F8D-4030-BDB6-D2F345134185}"
+          DTS:From="Package\Move PGP Files\Delete Decrypted Files"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Move PGP Files\Delete Encrypted Files" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process Success Sql Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{e2ba942b-d112-499f-9501-93a59e7b7ac5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Success Sql Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="update Monitoring Set Status = 2, StatusDesc = 'Package Execution Successfully Completed',EndDateTime=GETDATE() where PackageName = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set Level Info"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{15236608-153f-4213-b412-b8d5ec8e7ffb}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set Level Info"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+          SQLTask:SqlStatementSource="insert into [Monitoring]( &#xA;     [LevelId]&#xA;    ,[PackageName]&#xA;    ,[LevelType]&#xA;    ,[StartDateTime]&#xA;    ,[Status]&#xA;    ,[StatusDesc]&#xA;  ) &#xA;values (&#xA;    cast(? as Decimal(4,2))  &#xA;    ,?&#xA;    ,?&#xA;    ,GetDate()&#xA;    ,1&#xA;    ,'Package Execution Started'&#xA;   )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::LevelID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::LevelType"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9FB1CB7A-0833-4844-9A4A-D14D6BF56D05}"
+      DTS:From="Package\Move PGP Files"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Process Success Sql Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{38B1BCEB-23CD-4BB7-96F9-A1F46C2560B3}"
+      DTS:From="Package\Get Pacakge Information"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Set Level Info" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{4BAF090D-F6A0-44A1-9BBC-BAC400243735}"
+      DTS:From="Package\Set Level Info"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Move PGP Files" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{A4CC8AB4-753F-43A2-86C5-656339B1300D}"
+      DTS:EventID="7602208"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{71195870-613E-4089-B8A6-0F320E17BF7D}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Process Failed Sql Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{fb19e6d8-0d1c-4d53-94f9-087c573fefa5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process Failed Sql Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="update Monitoring Set Status = -99, StatusDesc = 'Package Execution Failed',EndDateTime=GETDATE() where PackageName = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Send Error Message"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{e91f4dab-8c35-4aae-8934-97167759cc2c}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Send Error Message">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{83028825-442B-4E84-AA0D-A5825CBD04A3}"
+              SQLTask:SqlStatementSource="INSERT INTO dbo.SSISErrorTable (PackageName, &#xA;ErrorType, ErrorDescription,ErrorCode,CreatedDate,SourceName)&#xA;VALUES (?, 'Package Error',?,?, getdate(),?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Get Pacakge Information"
+          TopLeft="32.5,5.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Move PGP Files\Compression Task"
+          TopLeft="15,5.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Move PGP Files\Delete Decrypted Files"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Move PGP Files\Delete Encrypted Files"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\Move PGP Files.PrecedenceConstraints[Constraint]"
+          TopLeft="100.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Move PGP Files.PrecedenceConstraints[Constraint 1]"
+          TopLeft="100.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="201,307"
+          Size="201,350"
+          Id="Package\Move PGP Files"
+          TopLeft="32.0000000000001,209.5" />
+        <NodeLayout
+          Size="254,42"
+          Id="Package\Process Success Sql Task"
+          TopLeft="5.50000000000009,619.5" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Set Level Info"
+          TopLeft="59.5,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="132.5,559.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="132.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="132.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="197,42"
+          Id="Package.EventHandlers[OnError]\Process Failed Sql Task"
+          TopLeft="60,60" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package.EventHandlers[OnError]\Send Error Message"
+          TopLeft="317.5,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

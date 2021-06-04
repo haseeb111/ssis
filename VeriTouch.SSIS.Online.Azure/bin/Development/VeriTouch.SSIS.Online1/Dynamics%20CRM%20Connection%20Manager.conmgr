@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Dynamics CRM Connection Manager"
+  DTS:DTSID="{d75338f5-d0cd-4510-baae-8e1badc9e151}"
+  DTS:CreationName="DynamicsCRM">
+  <DTS:ObjectData>
+    <CrmConnectionManager
+      ConnectionString="AuthenticationType=OAuth;ServiceEndpoint=Soap2011;UserName=ssisintegrationuser@vrpvtdev01.onmicrosoft.com;Domain=;CrmServerUrl=https://vtsit.api.crm4.dynamics.com;ProxyUsername=;ProxyMode=NoProxy;ProxyServer=;ProxyServerPort=0;BypassProxyOnLocal=True;HomeRealmUri=;ApiVersion=;OAuthType=Password;ClientAppId=839d6481-676b-4f2c-abd2-182c65e0921c;AuthorizationServerUrl=;ServiceResource=;CertificateThumbprint=;ServiceTimeout=600;RetryOnIntermittentErrors=True;IgnoreCertificateErrors=False"
+      ConnectByProxy="False" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

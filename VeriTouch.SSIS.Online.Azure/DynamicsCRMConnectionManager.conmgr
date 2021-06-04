@@ -1,0 +1,13 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DynamicsCRMConnectionManager"
+  DTS:DTSID="{B232CF24-6963-419C-9056-EFD054E4B5F8}"
+  DTS:CreationName="DynamicsCRM">
+  <DTS:ObjectData>
+    <CrmConnectionManager
+      ConnectionString="AuthenticationType=Federation;ServiceEndpoint=Soap2011;UserName=VTD365V9\Roshni.c;Domain=;CrmServerUrl=https://corp-vtdev.veripark.com;ProxyUsername=;ProxyMode=NoProxy;ProxyServer=;ProxyServerPort=0;BypassProxyOnLocal=False;HomeRealmUri=;ApiVersion=;ServiceTimeout=600;RetryOnIntermittentErrors=True;IgnoreCertificateErrors=False">
+      <Password
+        Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6IZs/crcwEqRcL3zon5UYgAAAAACAAAAAAADZgAAwAAAABAAAACn9FGoqntgTWjK8vhQNDumAAAAAASAAACgAAAAEAAAAHzXv6cilBCbLBAZ9CjAxi9YAAAAizF78mnenTyAuj06AARoq2iIMcmtxY895/sidyqws8neqb0+MsHb/+WwI2kS1S8k+xg8BCfItorY5eLvcNeR3WQoIVwCwMqfuwSZRKpM5Pf1GtZvmaUWqRQAAAA1mx1ibofBoH5FnkQ4EquFfumHTQ==</Password>
+    </CrmConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SMTP Connection Manager"
+  DTS:DTSID="{D04E8A1F-AC3C-488B-B581-CE486B1A3A42}"
+  DTS:CreationName="SMTP (KingswaySoft)">
+  <DTS:ObjectData>
+    <ConnectionManager
+      ConnectionString="Username=;EnableSsl=True;SmtpServer=smtp.office365.com;SmtpServerPort=587;ServiceTimeout=120"
+      ConnectByProxy="False" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
